@@ -24,8 +24,8 @@ public class ChatListener implements Listener {
             e.setMessage(ChatColor.BLUE + message.replace("--", ""));
         } else if (message.startsWith("%%")
                 && message.endsWith("%%")
-                && message.replace("--", "").length() != 0) {
-            e.setMessage(ChatColor.BOLD + "" + ChatColor.GREEN + message.replace("%%", ""));
+                && message.replace("%%", "").length() != 0) {
+            e.setMessage(ChatColor.DARK_GREEN + message.replace("%%", ""));
         }
     }
 }
