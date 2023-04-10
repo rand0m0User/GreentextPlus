@@ -14,11 +14,17 @@ public class ChatListener implements Listener {
             e.setMessage(ChatColor.GREEN + message);
         } else if (message.startsWith("<")) {
             e.setMessage(ChatColor.GOLD + message);
-        } else if (message.startsWith("==") && message.endsWith("==")) {
+        } else if (message.startsWith("==")
+                && message.endsWith("==")
+                && message.replace("==", "").length() != 0) {
             e.setMessage(ChatColor.RED + message.replace("==", ""));
-        } else if (message.startsWith("--") && message.endsWith("--")) {
+        } else if (message.startsWith("--")
+                && message.endsWith("--")
+                && message.replace("--", "").length() != 0) {
             e.setMessage(ChatColor.BLUE + message.replace("--", ""));
-        } else if (message.startsWith("%%") && message.endsWith("%%")) {
+        } else if (message.startsWith("%%")
+                && message.endsWith("%%")
+                && message.replace("--", "").length() != 0) {
             e.setMessage(ChatColor.BOLD + "" + ChatColor.GREEN + message.replace("%%", ""));
         }
     }
