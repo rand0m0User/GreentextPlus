@@ -19,6 +19,8 @@ public class ChatListener implements Listener {
             e.setMessage(ChatColor.GREEN + message);
         } else if (message.startsWith("<")) {
             e.setMessage(ChatColor.GOLD + message); //KUUUUUUUZ ADD ChatColor.ORANGE
+        } else if (msg.startsWith("^")) {
+            e.setMessage(ChatColor.DARK_PURPLE + msg);
         } else if (message.startsWith(RED)
                 && message.endsWith(RED)
                 && message.replace(RED, "").length() != 0) { //fixed bug where "====" would result in an empty message
