@@ -75,11 +75,11 @@ public class ChatListener implements Listener {
                 } else if (msg.startsWith(COAL) //2 '-' 's
                         && msg.endsWith(COAL)
                         && msg.replace(COAL, "").length() != 0) {
-                    e.setMessage(ChatColor.DARK_GRAY + msg.replace(CALM, ""));
+                    e.setMessage(ChatColor.DARK_GRAY + msg.replace(COAL, ""));
                 } else if (msg.startsWith(COAL1) //1 '-' 's
                         && msg.endsWith(COAL1)
                         && msg.replace(COAL1, "").length() != 0) {
-                    e.setMessage(ChatColor.GRAY + msg.replace(CALM1, ""));
+                    e.setMessage(ChatColor.GRAY + msg.replace(COAL1, ""));
                 }
                 break;
             case '|':
