@@ -13,6 +13,9 @@ public class ChatListener implements Listener {
     String CALM1 = "-";
     String CALM = "--";
     String CALM3 = "---";
+    String COAL1 = "+";
+    String COAL = "++";
+    String COAL3 = "+++";
     String DATAMINING = "%%";
     String YELLOW = "||";
     String CROSSOUT = "~~";
@@ -64,6 +67,21 @@ public class ChatListener implements Listener {
                     e.setMessage(ChatColor.AQUA + msg.replace(CALM1, ""));
                 }
                 break;
+            case '+':
+                if (msg.startsWith(COAL3) //3 '-' 's
+                        && msg.endsWith(COAL3)
+                        && msg.replace(COAL3, "").length() != 0) {
+                    e.setMessage(ChatColor.BLACK + msg.replace(COAL3, ""));
+                } else if (msg.startsWith(COAL) //2 '-' 's
+                        && msg.endsWith(COAL)
+                        && msg.replace(COAL, "").length() != 0) {
+                    e.setMessage(ChatColor.DARK_GRAY + msg.replace(CALM, ""));
+                } else if (msg.startsWith(COAL1) //1 '-' 's
+                        && msg.endsWith(COAL1)
+                        && msg.replace(COAL1, "").length() != 0) {
+                    e.setMessage(ChatColor.GRAY + msg.replace(CALM1, ""));
+                }
+                break;
             case '|':
                 if (msg.startsWith(YELLOW)
                         && msg.endsWith(YELLOW)
@@ -93,14 +111,14 @@ public class ChatListener implements Listener {
                 }
                 break;
             case '\'':
-                if (msg.startsWith(BOLD)
-                        && msg.endsWith(BOLD)
-                        && msg.replace(BOLD, "").length() != 0) {
-                    e.setMessage(ChatColor.BOLD + msg.replace(BOLD, ""));
-                } else if (msg.startsWith(ITALIC)
+                if (msg.startsWith(ITALIC)
                         && msg.endsWith(ITALIC)
                         && msg.replace(ITALIC, "").length() != 0) {
                     e.setMessage(ChatColor.ITALIC + msg.replace(ITALIC, ""));
+                } else if (msg.startsWith(BOLD)
+                        && msg.endsWith(BOLD)
+                        && msg.replace(BOLD, "").length() != 0) {
+                    e.setMessage(ChatColor.BOLD + msg.replace(BOLD, ""));
                 }
                 break;
             default:
