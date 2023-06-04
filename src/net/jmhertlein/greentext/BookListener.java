@@ -16,7 +16,7 @@ public class BookListener implements Listener {
         for (String bookPage : e.getNewBookMeta().getPages()) {
             if (!StandardCharsets.US_ASCII.newEncoder().canEncode(bookPage)) {
                 e.setCancelled(true);
-                getServer().broadcastMessage(e.getPlayer().getDisplayName()
+                getServer().broadcastMessage(ChatColor.DARK_RED + e.getPlayer().getDisplayName()
                         + " tried to write non ascii characters into a book!");
                 e.getPlayer().kickPlayer("kill yourself frognigger");
                 return;
