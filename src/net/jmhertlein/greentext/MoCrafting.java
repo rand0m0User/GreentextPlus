@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 public final class MoCrafting implements Listener {
 
-    MoCrafting(Plugin ref) { //you need to pass a refrence to "GreentextPlugin" around because you just have to okay???
+    MoCrafting(GreentextPlugin ref) { //you need to pass a refrence to "GreentextPlugin" around because you just have to okay???
         AddGappleRecipe(ref);
         AddWitherStarRecipe(ref);
     }
@@ -21,7 +21,7 @@ public final class MoCrafting implements Listener {
         recipe.shape(new String[]{"GGG", "GAG", "GGG"});
         recipe.setIngredient('G', Material.GOLD_BLOCK);
         recipe.setIngredient('A', Material.ENCHANTED_GOLDEN_APPLE);
-        Bukkit.addRecipe(recipe);
+        ref.getServer().addRecipe(recipe);
     }
 
     public void AddWitherStarRecipe(Plugin ref) {
@@ -30,6 +30,6 @@ public final class MoCrafting implements Listener {
         recipe.shape(new String[]{"WWW", "SSS", " S "});
         recipe.setIngredient('W', Material.WITHER_SKELETON_SKULL);
         recipe.setIngredient('S', Material.SOUL_SAND);
-        Bukkit.addRecipe(recipe);
+        ref.getServer().addRecipe(recipe);
     }
 }
