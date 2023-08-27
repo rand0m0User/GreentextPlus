@@ -1,3 +1,4 @@
 name: GreentextPlus
 main: net.jmhertlein.greentext.GreentextPlugin
 version: 1.0
+api-version: 1.20
