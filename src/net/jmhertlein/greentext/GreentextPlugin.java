@@ -8,7 +8,7 @@ public class GreentextPlugin extends JavaPlugin {
     //I ❤ BOILERPLATE
     public void onEnable() {
         this.getServer().getPluginManager().registerEvents(new ChatListener(), this); //greentext
-        this.getServer().getPluginManager().registerEvents(new BookListener(), this); //anti book ban
+        //this.getServer().getPluginManager().registerEvents(new BookListener(), this); //anti book ban
     }
     //I ❤ BOILERPLATE
     //I ❤ BOILERPLATE
