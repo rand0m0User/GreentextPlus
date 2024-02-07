@@ -16,7 +16,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 
-public class GreentextChatListener implements Listener {
+public class ChatListener implements Listener {
 
 	private final List<Attribute> formattingAttribute = new ArrayList<>(Arrays.asList(
 			new Attribute(false, ">", NamedTextColor.GREEN, null),
