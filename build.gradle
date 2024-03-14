@@ -5,7 +5,13 @@ plugins {
 }
 
 group 'net.jmhertlein'
-version '1.5'
+version '1.6'
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+options.encoding = 'UTF-8'
+}
 
 repositories {
     mavenCentral()
