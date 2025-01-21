@@ -1,0 +1,2 @@
+build/libs/GreentextPlus-1.6.jar
+/default/plugins/GreentextPlus-1.6.jar
