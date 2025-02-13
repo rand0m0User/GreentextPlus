@@ -83,21 +83,22 @@ public class ChatListener implements Listener {
 			message = TextComponent.ofChildren(replaceMagicChars(message, chars)).decorate(selected.deco);
 		}
 
+		// get the string and be accepting of UTF8+ emojis 
+		String[] c = PlainTextComponentSerializer.plainText().serialize(message).codePoints()
+			    .mapToObj(cp -> new String(Character.toChars(cp)))
+			    .toArray(size -> new String[size]);
+		
 		// do rainbow text
 		if (selected.chars.equals("~-~")) {
 			TextComponent.Builder builder = Component.text();
 			// replace chars
 			message = TextComponent.ofChildren(replaceMagicChars(message, selected.chars));
-
-			// get the string
-			String tmp = PlainTextComponentSerializer.plainText().serialize(message);
-
+		
 			// C O L O R!
-			for (int j = 0; j < tmp.length(); j++) {
-				char c = tmp.charAt(j);
-				float hue = (0.8f - ((float) j / (float) tmp.length()) * 0.8f) % 1.0f;
+			for (int j = 0; j < c.length; j++) {
+				float hue = (0.8f - ((float) j / (float) c.length) * 0.8f) % 1.0f;
 				TextColor color = TextColor.color(Color.HSBtoRGB(hue, 1.0f, 1.0f));
-				builder.append(Component.text(String.valueOf(c), color));
+				builder.append(Component.text(c[j], color));
 			}
 			message = builder.build();
 		}
@@ -107,14 +108,11 @@ public class ChatListener implements Listener {
 			TextComponent.Builder builder = Component.text();
 			// replace chars
 			message = TextComponent.ofChildren(replaceMagicChars(message, selected.chars));
+			
+			for (int j = 0; j < c.length; j++) {
 
-			// get the string
-			String tmp = PlainTextComponentSerializer.plainText().serialize(message);
-
-			for (int j = 0; j < tmp.length(); j++) {
-				char c = tmp.charAt(j);
 				// this was real GLSL at one point
-				float uv = (float) j / (float) tmp.length();
+				float uv = (float) j / (float) c.length;
 				int ret = -1; // white
 				if (uv < 0.4 || uv > 0.6) {
 					ret = 16690887;
@@ -123,7 +121,7 @@ public class ChatListener implements Listener {
 					ret = 9240313;
 				}
 				TextColor color = TextColor.color(ret);
-				builder.append(Component.text(String.valueOf(c), color));
+				builder.append(Component.text(c[j], color));
 			}
 			message = builder.build();
 		}
