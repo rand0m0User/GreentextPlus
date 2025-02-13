@@ -23,7 +23,7 @@ public class ChatListener implements Listener {
 	private final List<Attribute> formattingAttribute = new ArrayList<>(Arrays.asList(
 			new Attribute(true, "~-~", -1, null), // color text
 			new Attribute(true, "-~-", -1, null), // tranny text
-			new Attribute(false, ">", NamedTextColor.GREEN, null),
+			new Attribute(false, ">", NamedTextColor.GREEN, null), 
 			new Attribute(false, "<", NamedTextColor.GOLD, null),
 			new Attribute(false, "^", NamedTextColor.DARK_PURPLE, null),
 			new Attribute(true, "!!", NamedTextColor.DARK_RED, TextDecoration.BOLD), // red "glow" text
@@ -80,20 +80,16 @@ public class ChatListener implements Listener {
 		}
 		// apply deco (if present)
 		if (selected.deco != null) {
-			message = TextComponent.ofChildren(replaceMagicChars(message, chars)).decorate(selected.deco);
+			message = TextComponent.ofChildren(message).decorate(selected.deco);
 		}
 
-		// get the string and be accepting of UTF8+ emojis 
+		// get the string and be accepting of UTF8+ emojis
 		String[] c = PlainTextComponentSerializer.plainText().serialize(message).codePoints()
-			    .mapToObj(cp -> new String(Character.toChars(cp)))
-			    .toArray(size -> new String[size]);
-		
+				.mapToObj(CodePoint -> new String(Character.toChars(CodePoint))).toArray(size -> new String[size]);
+
 		// do rainbow text
 		if (selected.chars.equals("~-~")) {
 			TextComponent.Builder builder = Component.text();
-			// replace chars
-			message = TextComponent.ofChildren(replaceMagicChars(message, selected.chars));
-		
 			// C O L O R!
 			for (int j = 0; j < c.length; j++) {
 				float hue = (0.8f - ((float) j / (float) c.length) * 0.8f) % 1.0f;
@@ -102,15 +98,10 @@ public class ChatListener implements Listener {
 			}
 			message = builder.build();
 		}
-
 		// do tranny text
 		if ("-~-".equals(selected.chars)) {
 			TextComponent.Builder builder = Component.text();
-			// replace chars
-			message = TextComponent.ofChildren(replaceMagicChars(message, selected.chars));
-			
 			for (int j = 0; j < c.length; j++) {
-
 				// this was real GLSL at one point
 				float uv = (float) j / (float) c.length;
 				int ret = -1; // white
